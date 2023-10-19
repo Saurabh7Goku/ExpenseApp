@@ -11,6 +11,8 @@ class ModifiedDetailsPage extends StatelessWidget {
     final Map<String, double> totalIncomeMap = {};
     final Map<String, double> totalExpenseMap = {};
 
+    final Set<String> uniqueNames = Set<String>();
+
     for (final user in userList) {
       final name = user.name.toLowerCase();
       final isIncome = user.isIncome;
@@ -33,6 +35,7 @@ class ModifiedDetailsPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: DataTable(
+          columnSpacing: MediaQuery.of(context).size.width * 0.1,
           columns: [
             DataColumn(
               label: Text('Name'),
@@ -47,7 +50,17 @@ class ModifiedDetailsPage extends StatelessWidget {
               label: Text('Total'),
             ),
           ],
-          rows: totalIncomeMap.keys.map((name) {
+          rows: userList.where((user) {
+            final name = user.name.toLowerCase();
+
+            // Check if the name is unique, if so, add it to the set
+            if (!uniqueNames.contains(name)) {
+              uniqueNames.add(name);
+              return true;
+            }
+            return false;
+          }).map((user) {
+            final name = user.name.toLowerCase();
             final totalIncome = totalIncomeMap[name] ?? 0;
             final totalExpense = totalExpenseMap[name] ?? 0;
             final total = totalIncome - totalExpense;

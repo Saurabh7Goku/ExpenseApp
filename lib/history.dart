@@ -78,40 +78,50 @@ class _DetailsPageState extends State<DetailsPage> {
             child: userList.isEmpty
                 ? Center(child: CircularProgressIndicator())
                 : SingleChildScrollView(
-                    child: DataTable(
-                      columns: [
-                        DataColumn(
-                            label: Text('Name',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w900))),
-                        DataColumn(
-                            label: Text('Income',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w900))),
-                        DataColumn(
-                            label: Text('Expense',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w900))),
-                        DataColumn(
-                            label: Text('Type',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w900))),
-                      ],
-                      rows: userList.map((user) {
-                        return DataRow(
-                          cells: [
-                            DataCell(Text(user.name)),
-                            DataCell(Text(user.totalIncome.toStringAsFixed(1))),
-                            DataCell(
-                                Text(user.totalExpense.toStringAsFixed(1))),
-                            DataCell(Text(user.isCash ? 'Cash' : 'Online')),
-                          ],
-                        );
-                      }).toList(),
+                    scrollDirection: Axis.vertical,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: DataTable(
+                        columnSpacing: MediaQuery.of(context).size.width * 0.1,
+                        clipBehavior: Clip.none,
+                        columns: [
+                          DataColumn(
+                              label: Text('Name',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w900))),
+                          DataColumn(
+                              label: Text('Income',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w900))),
+                          DataColumn(
+                              label: Text('Expense',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w900))),
+                          DataColumn(
+                              label: Text('Type',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w900))),
+                        ],
+                        rows: userList.map((user) {
+                          return DataRow(
+                            cells: [
+                              DataCell(Text(
+                                user.name,
+                                softWrap: true,
+                              )),
+                              DataCell(
+                                  Text(user.totalIncome.toStringAsFixed(1))),
+                              DataCell(
+                                  Text(user.totalExpense.toStringAsFixed(1))),
+                              DataCell(Text(user.isCash ? 'Cash' : 'Online')),
+                            ],
+                          );
+                        }).toList(),
+                      ),
                     ),
                   ),
           ),

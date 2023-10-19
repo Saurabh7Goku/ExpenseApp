@@ -60,69 +60,67 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.only(top: 60),
-          child: Column(
-            children: [
-              Container(
-                height: 60,
-                color: Colors.deepPurple.shade50,
-                width: double.infinity,
-                child: Center(
-                  child: Text(
-                    'Ez Tracker',
-                    style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.deepPurpleAccent.shade100),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              ImageSlideshow(),
-              SizedBox(
-                height: 40,
-              ),
-              Center(
-                child: Text(
-                  'Welcome Mr. Singh',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 32,
-                      color: CupertinoColors.systemPurple),
-                ),
-              )
-            ],
-          ),
-        ),
-        floatingActionButton: Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 50, left: 20),
-            child: Container(
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.only(top: 60),
+        child: Column(
+          children: [
+            Container(
               height: 60,
-              width: MediaQuery.of(context).size.width / 2.5,
-              child: ElevatedButton.icon(
-                onPressed: () async {
-                  bool auth = await Authentication.authentication(context);
-                  if (auth) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DashBoard(),
-                      ),
-                    );
-                  }
-                },
-                icon: Icon(Icons.fingerprint),
-                label: Text(
-                  'Authenticate',
-                  style: TextStyle(fontWeight: FontWeight.w500),
+              color: Colors.deepPurple.shade50,
+              width: double.infinity,
+              child: Center(
+                child: Text(
+                  'Ez Tracker',
+                  style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.deepPurpleAccent.shade100),
                 ),
+              ),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            ImageSlideshow(),
+            SizedBox(
+              height: 40,
+            ),
+            Center(
+              child: Text(
+                'Welcome Mr. Singh',
+                style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 32,
+                    color: CupertinoColors.systemPurple),
+              ),
+            )
+          ],
+        ),
+      ),
+      floatingActionButton: Align(
+        alignment: Alignment.bottomCenter,
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 50, left: 20),
+          child: Container(
+            height: 60,
+            width: MediaQuery.of(context).size.width / 2.5,
+            child: ElevatedButton.icon(
+              onPressed: () async {
+                bool auth = await Authentication.authentication(context);
+                if (auth) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DashBoard(),
+                    ),
+                  );
+                }
+              },
+              icon: Icon(Icons.fingerprint),
+              label: Text(
+                'Authenticate',
+                style: TextStyle(fontWeight: FontWeight.w500),
               ),
             ),
           ),
