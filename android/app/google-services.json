@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "169603548912",
+    "project_id": "expensedb-f1071",
+    "storage_bucket": "expensedb-f1071.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169603548912:android:d3a6bb6338d02f63f6e435",
+        "android_client_info": {
+          "package_name": "com.example.eazyexpense"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChS3L7k0lFLSe_b84JccYNcGDiS2Tdw0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
